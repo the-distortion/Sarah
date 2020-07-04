@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Sarah</string>
     <string name="todo">TODO</string>
+    <string name="emergency_head">EMERGENCY CALL</string>
+    <string name="emergency_info">Make Emergency Calls to your family</string>
+    <string name="notes_head">NOTES</string>
+    <string name="notes_info">Keep Important Notes, so that you dont forget!</string>
+    <string name="reports_head">REPORTS</string>
 </resources>
