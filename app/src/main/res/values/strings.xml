@@ -6,4 +6,7 @@
     <string name="notes_head">NOTES</string>
     <string name="notes_info">Keep Important Notes, so that you dont forget!</string>
     <string name="reports_head">REPORTS</string>
+    <string name="reports_info">Keep all your important Medical Reports scanned in one place.</string>
+    <string name="reminders_info">Add the important dates and times, to be reminded about them on time!</string>
+    <string name="reminders_head">REMINDERS</string>
 </resources>
