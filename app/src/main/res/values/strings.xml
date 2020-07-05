@@ -9,4 +9,5 @@
     <string name="reports_info">Keep all your important Medical Reports scanned in one place.</string>
     <string name="reminders_info">Add the important dates and times, to be reminded about them on time!</string>
     <string name="reminders_head">REMINDERS</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

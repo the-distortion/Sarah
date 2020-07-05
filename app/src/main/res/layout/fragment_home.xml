@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<FrameLayout
+<LinearLayout
+    android:id="@+id/home_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/frame"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="66dp"/>
-
-<!--
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,29 +24,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-        &lt;!&ndash;Emergency Call&ndash;&gt;
-        <ImageView
-            android:id="@+id/img_emergency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:contentDescription="@string/todo"
-            tools:srcCompat="@tools:sample/avatars" />
+            <!--Emergency Call-->
+            <ImageView
+                android:id="@+id/img_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/todo"
+                tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/emergency_head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="16dp"
-            android:layout_toEndOf="@+id/img_emergency"
-            android:text="@string/emergency_head"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:paddingTop="7dp"/>
+            <TextView
+                android:id="@+id/emergency_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@+id/img_emergency"
+                android:text="@string/emergency_head"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:paddingTop="7dp"/>
 
             <TextView
                 android:id="@+id/emergency_Info"
@@ -68,15 +61,15 @@
                 android:maxLines="2"
                 android:text="@string/emergency_info" />
 
-        &lt;!&ndash;<View
-            android:id="@+id/divider1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/img_emergency"
-            android:layout_marginTop="16dp"
-            android:background="@color/colorAccent" />&ndash;&gt;
+            <!--<View
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/img_emergency"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorAccent" />-->
 
-    </RelativeLayout>
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -96,7 +89,7 @@
             android:layout_height="match_parent"
             tools:context=".MainActivity">
 
-            &lt;!&ndash;Notes&ndash;&gt;
+            <!--Notes-->
             <ImageView
                 android:id="@+id/img_notes"
                 android:layout_width="wrap_content"
@@ -129,13 +122,13 @@
                 android:maxLines="2"
                 android:text="@string/notes_info" />
 
-            &lt;!&ndash;<View
+            <!--<View
                 android:id="@+id/divider2"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@+id/img_notes"
                 android:layout_marginTop="16dp"
-                android:background="@color/colorAccent" />&ndash;&gt;
+                android:background="@color/colorAccent" />-->
 
         </RelativeLayout>
 
@@ -248,4 +241,4 @@
 
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>-->
+</LinearLayout>
