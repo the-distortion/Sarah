@@ -8,17 +8,16 @@ import android.widget.LinearLayout
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var home_layout: LinearLayout
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        home_layout = findViewById(R.id.home_layout)
+        val menufrag = menuFrag()
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.frame, Home())
-            .commit()
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragswitch, menufrag)
+            commit()
 
+        }
     }
 }
