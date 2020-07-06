@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         val menufrag = menuFrag()
 
         supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragswitch, menufrag)
+            replace(R.id.fragSwitch, menufrag)
             commit()
 
         }

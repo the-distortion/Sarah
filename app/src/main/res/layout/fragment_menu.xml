@@ -27,12 +27,13 @@
             <!--Emergency Call-->
             <ImageView
                 android:id="@+id/img_emergency"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:background="#E6E6E6"
                 android:contentDescription="@string/todo"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/ic_emergency_call" />
 
             <TextView
                 android:id="@+id/emergency_head"
@@ -92,11 +93,12 @@
             <!--Notes-->
             <ImageView
                 android:id="@+id/img_notes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
                 android:layout_alignParentStart="true"
+                android:background="#E6E6E6"
                 android:contentDescription="@string/todo"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/ic_add_notes" />
 
             <TextView
                 android:id="@+id/notes_head"
@@ -152,12 +154,13 @@
 
             <ImageView
                 android:id="@+id/img_reports"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:background="#E6E6E6"
                 android:contentDescription="@string/todo"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/ic_reports" />
 
             <TextView
                 android:id="@+id/reports_head"
@@ -204,12 +207,13 @@
 
             <ImageView
                 android:id="@+id/img_reminders"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:background="#E6E6E6"
                 android:contentDescription="@string/todo"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/ic_reminders" />
 
             <TextView
                 android:id="@+id/reminders_head"
