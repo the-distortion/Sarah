@@ -3,7 +3,7 @@
     <string name="todo">TODO</string>
     <string name="emergency_head">Emergency Call</string>
     <string name="emergency_info">Make Emergency Calls to your family.</string>
-    <string name="notes_head">Notes</string>
+    <string name="notes_head">&#160;Notes</string>
     <string name="notes_info">Keep Important Notes, so that you dont forget!</string>
     <string name="reports_head">Reports</string>
     <string name="reports_info">Keep all your important Medical Reports scanned in one place.</string>
