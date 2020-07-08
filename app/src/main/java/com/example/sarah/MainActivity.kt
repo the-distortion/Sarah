@@ -2,6 +2,7 @@ package com.example.sarah
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 //import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.fragment_menu.*
 
@@ -13,8 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-       val menufrag = MenuFragment()
+        val menufrag = MenuFragment()
 
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragSwitch, menufrag)
