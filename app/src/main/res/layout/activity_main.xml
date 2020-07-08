@@ -20,7 +20,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fontFamily="@font/kalam_bold"
                     android:text="@string/app_name"
                     android:textAlignment="textStart"
                     android:textAllCaps="false"
@@ -33,12 +32,17 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <FrameLayout
-            android:id="@+id/fragSwitch"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/toolbar" />
+            android:fillViewport="true"
+            android:layout_below="@+id/toolbar" >
 
-        <!--    </ScrollView>-->
+                <FrameLayout
+                    android:id="@+id/fragSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        </ScrollView>
 
 </RelativeLayout>

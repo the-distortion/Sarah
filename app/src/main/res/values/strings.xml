@@ -10,4 +10,5 @@
     <string name="reminders_info">Add the important dates and times, to be reminded about them on time!</string>
     <string name="reminders_head">Reminders</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ads_head">ads(experimental)</string>
 </resources>
