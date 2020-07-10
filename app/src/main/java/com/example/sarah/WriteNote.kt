@@ -1,33 +1,16 @@
 package com.example.sarah
 
+import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_notes.*
+import kotlinx.android.synthetic.main.fragment_write_note.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [WriteNote.newInstance] factory method to
- * create an instance of this fragment.
- */
 class WriteNote : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,23 +20,53 @@ class WriteNote : Fragment() {
         return inflater.inflate(R.layout.fragment_write_note, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment WriteNote.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            WriteNote().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+
+        btn_save_note.setOnClickListener {
+
+            val noteTitle = note_title.text.toString().trim()
+            val noteBody = note_body.text.toString().trim()
+
+            if(noteTitle.isEmpty())
+            {
+                note_title.error = "Title Required"
+                note_title.requestFocus()
+                return@setOnClickListener
             }
+
+            if(noteBody.isEmpty())
+            {
+                note_body.error = "Body Required"
+                note_body.requestFocus()
+                return@setOnClickListener
+            }
+            println("line 45 reached")
+            val note = Note(noteTitle, noteBody)
+            println("line 47 reached")
+            saveNote(note)
+            println("line 49 reached")
+        }
     }
+
+    private fun saveNote(note: Note)
+    {
+        class SaveNote: AsyncTask<Void, Void, Void>()
+        {
+            override fun doInBackground(vararg params: Void?): Void? {
+                NoteDatabase(activity!!).getNoteDao().addNote(note)
+                return null
+            }
+
+            override fun onPostExecute(result: Void?) {
+                super.onPostExecute(result)
+
+                Toast.makeText(activity, "note.title", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        SaveNote().execute()
+    }
+
 }

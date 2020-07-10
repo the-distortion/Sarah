@@ -19,6 +19,7 @@ class MenuFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         card_notes.setOnClickListener{
 
             activity?.findViewById<TextView>(R.id.toolbar_title)?.text = resources.getString(R.string.notes_head).trim()
