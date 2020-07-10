@@ -32,17 +32,10 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <ScrollView
+        <FrameLayout
+            android:id="@+id/fragSwitch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true"
-            android:layout_below="@+id/toolbar" >
-
-                <FrameLayout
-                    android:id="@+id/fragSwitch"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-        </ScrollView>
+            android:layout_below="@id/toolbar"/>
 
 </RelativeLayout>

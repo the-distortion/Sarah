@@ -6,9 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".NotesFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:fillViewport="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hehe..send notes ;)"
+            android:textSize="300sp" />
+
+    </ScrollView>
 
     <Button
-        android:id="@+id/button"
+        app:backgroundTint="@null"
+        android:id="@+id/btn_add_notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -20,6 +34,7 @@
         android:textSize="24sp"
         android:drawableLeft="@drawable/ic_plus"
         android:background="@drawable/add_note_button_bg"
-        android:text="Add Notes" />
+        android:text="Add Notes"
+        android:theme="@style/AppTheme"/>
 
 </RelativeLayout>
