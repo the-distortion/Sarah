@@ -13,7 +13,8 @@
         android:hint="Title of your note"
         android:layout_margin="10dp"
         android:padding="10dp"
-        android:elevation="10dp"/>
+        android:elevation="10dp"
+        android:textSize="22sp"/>
 
     <EditText
         android:id="@+id/note_body"
@@ -27,6 +28,17 @@
         android:layout_marginRight="10dp"
         android:hint="Body of your note"
         android:gravity="top"/>
+
+    <ImageView
+        android:id="@+id/img_btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/note_body"
+        android:layout_alignEnd="@+id/note_body"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="7dp"
+        android:src="@drawable/ic_reset_cross"
+        android:tint="@android:color/holo_red_dark" />
 
     <Button
         android:id="@+id/btn_save_note"
