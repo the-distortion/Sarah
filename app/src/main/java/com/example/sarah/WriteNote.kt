@@ -1,5 +1,6 @@
 package com.example.sarah
 
+import android.content.Context
 import android.content.DialogInterface
 import android.os.AsyncTask
 import android.os.Bundle
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.fragment_notes.*
 import kotlinx.android.synthetic.main.fragment_write_note.*
+import java.io.FileOutputStream
 
 class WriteNote : Fragment() {
 
@@ -68,11 +70,20 @@ class WriteNote : Fragment() {
                 note_body.requestFocus()
                 return@setOnClickListener
             }
-            println("line 45 reached")
+
+            val note : FileOutputStream = context!!.openFileOutput(noteTitle, Context.MODE_PRIVATE)
+//            if(!noteCreated) Toast.makeText(activity!!, "$noteTitle already exists and might be overwritten!", Toast.LENGTH_LONG).show()
+            note.write(noteBody.toByteArray())
+            Toast.makeText(activity!!, "$noteTitle is saved.", Toast.LENGTH_LONG).show()
+            note.close()
+            context!!.fileList().forEach {
+                println(it)
+            }
+            /*println("line 45 reached")
             val note = Note(noteTitle, noteBody)
             println("line 47 reached")
             saveNote(note)
-            println("line 49 reached")
+            println("line 49 reached")*/
         }
     }
 

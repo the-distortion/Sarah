@@ -4,7 +4,7 @@
     <string name="emergency_head">Emergency Call</string>
     <string name="emergency_info">Make Emergency Calls to your family.</string>
     <string name="notes_head">&#160;Notes</string>
-    <string name="notes_info">Keep Important Notes, so that you dont forget!</string>
+    <string name="notes_info">Keep Important Notes, so that you don\'t forget!</string>
     <string name="reports_head">Reports</string>
     <string name="reports_info">Keep all your important Medical Reports scanned in one place.</string>
     <string name="reminders_info">Add the important dates and times, to be reminded about them on time!</string>
@@ -14,7 +14,7 @@
     <string name="add_note_head">New Note</string>
     <string name="reset_note_dialog_head">Reset Note?</string>
     <string name="reset_note_dialog_message">Clicking on this cross/reset button will DELETE all the things you have just noted in.
-    Do you still wish to continue?</string>
-    <string name="dont_reset_note">Sorry, my mistake :(</string>
-    <string name="ok">Yes! Duh..</string>
+    \n\nDo you still wish to continue?</string>
+    <string name="dont_reset_note">&#10008; Sorry, no :(</string>
+    <string name="ok">&#10004;&#160;Yes! duh</string>
 </resources>
