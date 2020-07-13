@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.fragment_notes.*
 import kotlinx.android.synthetic.main.fragment_write_note.*
+import java.io.File
 import java.io.FileOutputStream
 
 class WriteNote : Fragment() {

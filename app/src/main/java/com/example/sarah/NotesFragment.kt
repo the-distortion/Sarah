@@ -1,5 +1,6 @@
 package com.example.sarah
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +10,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_notes.*
 import java.io.File
+import java.io.FileInputStream
 
 class NotesFragment : Fragment() {
+
+    val path = context?.filesDir
+    val letDirectory = File(path, "Notes")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +28,11 @@ class NotesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        File("/").walk().forEach {
+        letDirectory.mkdirs()
+        println("Directory done: ${path?.name}")
+        context?.fileList()?.forEach {
+            println("line 34>> $it")
+
             val itPtr = it
             val tmpNoteNames = TextView(activity)
             tmpNoteNames.layoutParams = ViewGroup.LayoutParams(
@@ -31,10 +40,11 @@ class NotesFragment : Fragment() {
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
             tmpNoteNames.setOnClickListener {
-                Toast.makeText(activity!!, itPtr.readText(), Toast.LENGTH_SHORT).show()
+                val itFile = context!!.openFileInput(itPtr)
+                Toast.makeText(activity!!,
+                    itFile.bufferedReader().readText() , Toast.LENGTH_SHORT).show()
             }
-            tmpNoteNames.text = it.name
-            tmpNoteNames.height
+            tmpNoteNames.text = it
             notes_list_layout.addView(tmpNoteNames)
         }
 
