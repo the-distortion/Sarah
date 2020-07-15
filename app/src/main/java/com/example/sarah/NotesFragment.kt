@@ -1,21 +1,17 @@
 package com.example.sarah
 
-import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_notes.*
-import java.io.File
-import java.io.FileInputStream
 
 class NotesFragment : Fragment() {
-
-    val path = context?.filesDir
-    val letDirectory = File(path, "Notes")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,21 +24,41 @@ class NotesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        letDirectory.mkdirs()
-        println("Directory done: ${path?.name}")
         context?.fileList()?.forEach {
             println("line 34>> $it")
 
             val itPtr = it
             val tmpNoteNames = TextView(activity)
+            tmpNoteNames.setPadding(10, 10, 10, 10)
+            tmpNoteNames.textSize = 22f
             tmpNoteNames.layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
             tmpNoteNames.setOnClickListener {
                 val itFile = context!!.openFileInput(itPtr)
-                Toast.makeText(activity!!,
-                    itFile.bufferedReader().readText() , Toast.LENGTH_SHORT).show()
+//                Toast.makeText(activity!!,
+//                    itFile.bufferedReader().readText() , Toast.LENGTH_SHORT).show()
+
+                val alertDialog: AlertDialog? = activity?.let {
+                    val builder = AlertDialog.Builder(it)
+                    builder.apply {
+                        setTitle(itPtr)
+                        setMessage("${itFile.bufferedReader().readText()}\nDelete note?")
+                        setPositiveButton(R.string.ok,
+                            DialogInterface.OnClickListener { _, _ ->
+                                Toast.makeText(activity!!, "Deleting Note $itPtr", Toast.LENGTH_LONG).show()
+                                context.deleteFile(itPtr)
+                                tmpNoteNames.visibility = View.GONE
+                            })
+                        setNegativeButton(R.string.dont_reset_note,null)
+                    }
+                    val create = builder.create()
+                    create
+                }
+
+                alertDialog?.show()
+
             }
             tmpNoteNames.text = it
             notes_list_layout.addView(tmpNoteNames)

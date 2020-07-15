@@ -17,4 +17,5 @@
     \n\nDo you still wish to continue?</string>
     <string name="dont_reset_note">&#10008; Sorry, no :(</string>
     <string name="ok">&#10004;&#160;Yes! duh</string>
+    <string name="add_emergency_contact">Add an emergency contact</string>
 </resources>
