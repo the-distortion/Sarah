@@ -6,6 +6,7 @@
     android:gravity="center">
 
     <TextView
+        android:id="@+id/contact_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -18,13 +19,15 @@
         android:layout_height="50dp"
         android:src="@drawable/ic_emergency_call"
         android:tint="@android:color/holo_green_light"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:onClick="callContact"/>
     <ImageView
         android:id="@+id/delete_contact"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_reset_cross"
         android:tint="@android:color/holo_red_dark"
-        android:layout_weight="0.7"/>
+        android:layout_weight="0.7"
+        android:onClick="deleteContact"/>
 
 </LinearLayout>
