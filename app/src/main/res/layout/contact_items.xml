@@ -14,7 +14,7 @@
         android:layout_weight="3.3" />
 
     <ImageView
-        android:id="@+id/call"
+        android:id="@+id/btn_call"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:src="@drawable/ic_emergency_call"
@@ -22,7 +22,7 @@
         android:layout_weight="1"
         android:onClick="callContact"/>
     <ImageView
-        android:id="@+id/delete_contact"
+        android:id="@+id/btn_delete_contact"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:src="@drawable/ic_reset_cross"

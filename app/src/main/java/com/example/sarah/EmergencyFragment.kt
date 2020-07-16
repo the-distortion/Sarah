@@ -3,6 +3,7 @@ package com.example.sarah
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -13,13 +14,21 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import kotlinx.android.synthetic.main.contact_items.*
+import kotlinx.android.synthetic.main.contact_items.view.*
 import kotlinx.android.synthetic.main.fragment_emergency.*
+import java.lang.Exception
+import java.util.jar.Manifest
 
 class EmergencyFragment : Fragment() {
 
 //    var arr = arrayListOf<String>(*context?.fileList()!!)
     var contactSharedPreference = activity?.getSharedPreferences(getString(R.string.emergency_head), Context.MODE_PRIVATE)
     val REQUEST_PHONE_NUMBER = 1
+    val REQUEST_CODE = 1
     lateinit var contactUri: Uri
     lateinit var adapterArr: MutableList<String>
     lateinit var adapter: ArrayAdapter<String>
@@ -37,6 +46,9 @@ class EmergencyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        requestPermission(arrayOf(android.Manifest.permission.CALL_PHONE,
+            android.Manifest.permission.READ_CONTACTS), REQUEST_CODE)
+
         println(contactSharedPreference)
         if(contactSharedPreference != null) {
             adapter = ArrayAdapter<String>(context!!, R.layout.contact_items, R.id.contact_name, adapterArr)
@@ -52,7 +64,6 @@ class EmergencyFragment : Fragment() {
             if(intent.resolveActivity(context!!.packageManager) != null){
                 startActivityForResult(intent, REQUEST_PHONE_NUMBER)
             }
-
         }
     }
 
@@ -61,6 +72,7 @@ class EmergencyFragment : Fragment() {
             contactUri = data!!.data!!
 
             getPhoneNumber()
+//            emergency_contact_list.invalidateViews()
         }
     }
 
@@ -73,39 +85,58 @@ class EmergencyFragment : Fragment() {
             val contactName= cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME))
             println(contactName)
             println(phoneNumber)
-//            if(cursor.moveToNext()) {
-//                phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-//                println(phoneNumber)
-//                with(contactSharedPreference!!.edit()) {
-//                    putLong(contactName, phoneNumber.toLong())
-//                    commit()
-//                }
-//                Toast.makeText(context, "$contactName : $phoneNumber", Toast.LENGTH_LONG).show()
-//            }
+            /*if(cursor.moveToNext()) {
+                phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
+                println(phoneNumber)
+                with(contactSharedPreference!!.edit()) {
+                    putLong(contactName, phoneNumber.toLong())
+                    commit()
+                }
+                Toast.makeText(context, "$contactName : $phoneNumber", Toast.LENGTH_LONG).show()
+            }*/
             println("contactSharedPreference : $contactSharedPreference")
             with(contactSharedPreference!!.edit()) {
-                putLong(contactName, phoneNumber.toLong())
+                try {
+                    putLong(contactName, phoneNumber.toLong())
+                }catch (exception : Exception) {
+                    Toast.makeText(context, "Invalid Contact Number!", Toast.LENGTH_LONG).show()
+                    return
+                }
                 commit()
             }
+            adapterArr = contactSharedPreference!!.all.keys.toMutableList().sorted() as MutableList<String>
+//            adapterArr.forEach { println(">$it<")}
+            adapter = ArrayAdapter(context!!, R.layout.contact_items, R.id.contact_name, adapterArr)
+            emergency_contact_list.adapter = adapter
+//            emergency_contact_list.refreshDrawableState()
             Toast.makeText(context, "$contactName >> ${contactSharedPreference!!.getLong(contactName, -1)}", Toast.LENGTH_LONG).show()
-            adapterArr.add(contactName)
-            adapter.notifyDataSetChanged()
         }
         cursor.close()
-        contactSharedPreference!!.all.forEach {
+        /*contactSharedPreference!!.all.forEach {
             println("${it.key} => ${it.value}")
+        }*/
+    }
+
+    private fun requestPermission(permissions: Array<String>, requestCode: Int)
+    {
+        var permissionsNotGranted: String = ""
+        permissions.forEach {
+            if (ContextCompat.checkSelfPermission(context!!, it) == PackageManager.PERMISSION_DENIED) {
+                permissionsNotGranted += "$it "
+                println("$it asked :)")
+                /*@RequiresApi(23)
+                if(shouldShowRequestPermissionRationale(permission)) {
+                    // In an educational UI, explain to the user why your app requires this
+                    // permission for a specific feature to behave as expected. In this UI,
+                    // include a "cancel" or "no thanks" button that allows the user to
+                    // continue using your app without granting the permission.
+                    Toast.makeText(context, "Give me the permission to make calls to your emergency contacts!", Toast.LENGTH_LONG).show()
+                    ActivityCompat.requestPermissions(activity!!, arrayOf(permission), REQUEST_CALL)
+                }*/
+            }
         }
-    }
-
-    public fun callContact(view: TextView)
-    {
-        Toast.makeText(context, view.text, Toast.LENGTH_LONG).show()
-    }
-
-    public fun deleteContact(view: TextView)
-    {
-        Toast.makeText(context, "${view.text} deleted!", Toast.LENGTH_LONG).show()
-        view.visibility = View.GONE //false delete
+        ActivityCompat.requestPermissions(activity!!, permissionsNotGranted.split(" ")
+            .toTypedArray(), requestCode)
     }
 
 }
