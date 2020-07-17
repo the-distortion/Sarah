@@ -87,24 +87,4 @@ class WriteNote : Fragment() {
             println("line 49 reached")*/
         }
     }
-
-    private fun saveNote(note: Note)
-    {
-        class SaveNote: AsyncTask<Void, Void, Void>()
-        {
-            override fun doInBackground(vararg params: Void?): Void? {
-                NoteDatabase(activity!!).getNoteDao().addNote(note)
-                return null
-            }
-
-            override fun onPostExecute(result: Void?) {
-                super.onPostExecute(result)
-
-                Toast.makeText(activity, "note.title", Toast.LENGTH_LONG).show()
-            }
-        }
-
-        SaveNote().execute()
-    }
-
 }

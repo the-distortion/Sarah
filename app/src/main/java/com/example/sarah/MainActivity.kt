@@ -44,10 +44,10 @@ class MainActivity : AppCompatActivity() {
         val contactName = parent.getChildAt(0) as TextView
 //        println(getSharedPreferences(getString(R.string.emergency_head), 0)
 //            .getLong(contactName.text.toString(), -1))
-        Toast.makeText(this, "Calling ${contactSharedPreference.getLong(contactName.text.toString(),
-            -1).toString()}", Toast.LENGTH_SHORT).show()
-        val callIntent =Intent(Intent.ACTION_CALL, Uri.parse("tel:${contactSharedPreference.getLong(contactName.text.toString(),
-            -1).toString()}"))
+        Toast.makeText(this, "Calling ${contactSharedPreference
+            .getString(contactName.text.toString(), "0")}", Toast.LENGTH_SHORT).show()
+        val callIntent =Intent(Intent.ACTION_CALL, Uri.parse("tel:${contactSharedPreference
+            .getString(contactName.text.toString(), "0")}"))
         if(ContextCompat.checkSelfPermission(this,
                 android.Manifest.permission.CALL_PHONE ) == PackageManager.PERMISSION_GRANTED)
             startActivity(callIntent)

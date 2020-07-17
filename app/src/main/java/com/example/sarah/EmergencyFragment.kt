@@ -96,12 +96,13 @@ class EmergencyFragment : Fragment() {
             }*/
             println("contactSharedPreference : $contactSharedPreference")
             with(contactSharedPreference!!.edit()) {
-                try {
+                /*try {
                     putLong(contactName, phoneNumber.toLong())
                 }catch (exception : Exception) {
                     Toast.makeText(context, "Invalid Contact Number!", Toast.LENGTH_LONG).show()
                     return
-                }
+                }*/
+                putString(contactName, phoneNumber)
                 commit()
             }
             adapterArr = contactSharedPreference!!.all.keys.toMutableList().sorted() as MutableList<String>
@@ -109,7 +110,7 @@ class EmergencyFragment : Fragment() {
             adapter = ArrayAdapter(context!!, R.layout.contact_items, R.id.contact_name, adapterArr)
             emergency_contact_list.adapter = adapter
 //            emergency_contact_list.refreshDrawableState()
-            Toast.makeText(context, "$contactName >> ${contactSharedPreference!!.getLong(contactName, -1)}", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "$contactName >> ${contactSharedPreference!!.getString(contactName, "NA")}", Toast.LENGTH_LONG).show()
         }
         cursor.close()
         /*contactSharedPreference!!.all.forEach {
