@@ -1,27 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <EditText
+    <LinearLayout
+        android:id="@+id/note_title_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/note_title"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/note_edittext_bg"
-        android:hint="Title of your note"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:elevation="10dp"
-        android:textSize="22sp"/>
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <EditText
+            android:id="@+id/note_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginVertical="1dp"
+            android:layout_weight="5"
+            android:background="@android:color/transparent"
+            android:hint="Title of your note"
+            android:textSize="24sp"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/add_reminder"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_date_time"
+            android:tint="@color/colorPrimary"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/note_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/btn_save_note"
-        android:layout_below="@+id/note_title"
+        android:layout_below="@+id/note_title_linear"
         android:background="@drawable/note_edittext_bg"
         android:padding="10dp"
         android:layout_marginLeft="10dp"

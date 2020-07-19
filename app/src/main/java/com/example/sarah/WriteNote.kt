@@ -2,6 +2,7 @@ package com.example.sarah
 
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Color
 import android.os.AsyncTask
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -85,6 +86,10 @@ class WriteNote : Fragment() {
             println("line 47 reached")
             saveNote(note)
             println("line 49 reached")*/
+        }
+
+        add_reminder.setOnClickListener {
+            Toast.makeText(context, "Adding reminder to this note.", Toast.LENGTH_SHORT).show()
         }
     }
 }
